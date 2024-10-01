@@ -1,0 +1,1 @@
+var json_IN2ZIndustrial2Zone_24 = {"type":"FeatureCollection","name":"IN2ZIndustrial2Zone_24","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[]}
