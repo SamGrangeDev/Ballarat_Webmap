@@ -17,7 +17,7 @@ var style_ParcelAttributes_75 = function(feature, resolution){
     var offsetX = 8;
     var offsetY = 3;
     var placement = 'point';
-    if (feature.get("\"Company\" || ' ' || \"Directors\"") !== null && resolution > 0 && resolution < 28) {
+    if (feature.get("\"Company\" || ' ' || \"Directors\"") !== null && resolution > 0 && resolution < 14) {
         labelText = String(feature.get("\"Company\" || ' ' || \"Directors\""));
     }
     var style = [ new ol.style.Style({

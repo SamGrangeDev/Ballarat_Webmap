@@ -922,7 +922,7 @@ var lyr_BallaratWestPSPBoundary_62 = new ol.layer.Vector({
                 source:jsonSource_BallaratWestPSPBoundary_62, 
                 style: style_BallaratWestPSPBoundary_62,
                 popuplayertitle: "Ballarat West PSP Boundary",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/BallaratWestPSPBoundary_62.png" /> Ballarat West PSP Boundary'
             });
 var format_BallaratNorthWesternGrowthArea_63 = new ol.format.GeoJSON();
@@ -937,7 +937,7 @@ var lyr_BallaratNorthWesternGrowthArea_63 = new ol.layer.Vector({
                 source:jsonSource_BallaratNorthWesternGrowthArea_63, 
                 style: style_BallaratNorthWesternGrowthArea_63,
                 popuplayertitle: "Ballarat North Western Growth Area",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/BallaratNorthWesternGrowthArea_63.png" /> Ballarat North Western Growth Area'
             });
 var format_MinersRestTownshipPlan_64 = new ol.format.GeoJSON();
@@ -952,7 +952,7 @@ var lyr_MinersRestTownshipPlan_64 = new ol.layer.Vector({
                 source:jsonSource_MinersRestTownshipPlan_64, 
                 style: style_MinersRestTownshipPlan_64,
                 popuplayertitle: "Miners Rest Township Plan",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/MinersRestTownshipPlan_64.png" /> Miners Rest Township Plan'
             });
 var format_BallaratNorthPSPExpandedArea_65 = new ol.format.GeoJSON();
@@ -967,7 +967,7 @@ var lyr_BallaratNorthPSPExpandedArea_65 = new ol.layer.Vector({
                 source:jsonSource_BallaratNorthPSPExpandedArea_65, 
                 style: style_BallaratNorthPSPExpandedArea_65,
                 popuplayertitle: "Ballarat North PSP Expanded Area",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/BallaratNorthPSPExpandedArea_65.png" /> Ballarat North PSP Expanded Area'
             });
 var format_BallaratNorthPSPCoreArea_66 = new ol.format.GeoJSON();
@@ -982,7 +982,7 @@ var lyr_BallaratNorthPSPCoreArea_66 = new ol.layer.Vector({
                 source:jsonSource_BallaratNorthPSPCoreArea_66, 
                 style: style_BallaratNorthPSPCoreArea_66,
                 popuplayertitle: "Ballarat North PSP Core Area",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/BallaratNorthPSPCoreArea_66.png" /> Ballarat North PSP Core Area'
             });
 var format_BallaratWestGrowthArea_67 = new ol.format.GeoJSON();
@@ -997,7 +997,7 @@ var lyr_BallaratWestGrowthArea_67 = new ol.layer.Vector({
                 source:jsonSource_BallaratWestGrowthArea_67, 
                 style: style_BallaratWestGrowthArea_67,
                 popuplayertitle: "Ballarat West Growth Area",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/BallaratWestGrowthArea_67.png" /> Ballarat West Growth Area'
             });
 var format_AlfredtonWestPSP_68 = new ol.format.GeoJSON();
@@ -1012,7 +1012,7 @@ var lyr_AlfredtonWestPSP_68 = new ol.layer.Vector({
                 source:jsonSource_AlfredtonWestPSP_68, 
                 style: style_AlfredtonWestPSP_68,
                 popuplayertitle: "Alfredton West PSP",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/AlfredtonWestPSP_68.png" /> Alfredton West PSP'
             });
 var format_Suburb_69 = new ol.format.GeoJSON();
@@ -1027,7 +1027,7 @@ var lyr_Suburb_69 = new ol.layer.Vector({
                 source:jsonSource_Suburb_69, 
                 style: style_Suburb_69,
                 popuplayertitle: "Suburb",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/Suburb_69.png" /> Suburb'
             });
 var format_LGA_70 = new ol.format.GeoJSON();
@@ -1042,7 +1042,7 @@ var lyr_LGA_70 = new ol.layer.Vector({
                 source:jsonSource_LGA_70, 
                 style: style_LGA_70,
                 popuplayertitle: "LGA",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/LGA_70.png" /> LGA'
             });
 var format_PropertyBoundaries_71 = new ol.format.GeoJSON();
@@ -1057,7 +1057,7 @@ var lyr_PropertyBoundaries_71 = new ol.layer.Vector({
                 source:jsonSource_PropertyBoundaries_71, 
                 style: style_PropertyBoundaries_71,
                 popuplayertitle: "Property Boundaries",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/PropertyBoundaries_71.png" /> Property Boundaries'
             });
 var format_RezoneParcels_72 = new ol.format.GeoJSON();
@@ -1072,7 +1072,7 @@ var lyr_RezoneParcels_72 = new ol.layer.Vector({
                 source:jsonSource_RezoneParcels_72, 
                 style: style_RezoneParcels_72,
                 popuplayertitle: "Rezone Parcels",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/RezoneParcels_72.png" /> Rezone Parcels'
             });
 var format_ZonedParcels_73 = new ol.format.GeoJSON();
@@ -1087,7 +1087,7 @@ var lyr_ZonedParcels_73 = new ol.layer.Vector({
                 source:jsonSource_ZonedParcels_73, 
                 style: style_ZonedParcels_73,
                 popuplayertitle: "Zoned Parcels",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/ZonedParcels_73.png" /> Zoned Parcels'
             });
 var format_Estate_74 = new ol.format.GeoJSON();

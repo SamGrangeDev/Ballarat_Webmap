@@ -17,7 +17,7 @@ var style_Estate_74 = function(feature, resolution){
     var offsetX = 8;
     var offsetY = 3;
     var placement = 'point';
-    if (feature.get("\"Estate/Address\" || ' ' || \"Developer\" || ' ' || \"Estate Status\"") !== null && resolution > 0 && resolution < 28) {
+    if (feature.get("\"Estate/Address\" || ' ' || \"Developer\" || ' ' || \"Estate Status\"") !== null && resolution > 0 && resolution < 14) {
         labelText = String(feature.get("\"Estate/Address\" || ' ' || \"Developer\" || ' ' || \"Estate Status\""));
     }
     var style = [ new ol.style.Style({
