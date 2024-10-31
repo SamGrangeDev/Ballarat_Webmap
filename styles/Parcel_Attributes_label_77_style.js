@@ -6,9 +6,9 @@ var style_Parcel_Attributes_label_77 = function(feature, resolution) {
     var labelFont = "13.0px 'Open Sans', sans-serif";
     var labelFill = "#ffffff";
     var bufferColor = "#000000";
-    var bufferWidth = 2.0;
+    var bufferWidth = 3.0;
     var placement = 'point';
-    var rotationAngle = -25 * (Math.PI / 180);  // -25 degrees in radians
+    var rotationAngle = -15 * (Math.PI / 180);  // -25 degrees in radians
 
     // Access individual attributes
     var company = feature.get("Company") || 'n/a';
@@ -18,8 +18,8 @@ var style_Parcel_Attributes_label_77 = function(feature, resolution) {
     // Construct label text with line breaks
     if (company !== 'n/a' || directors !== 'n/a' || marketValue !== 'n/a') {
         labelText = 
-            "Company: " + company.replace(/(.{30})/g, "$1\n") + "\n" +
-            "Directors: " + directors.replace(/(.{30})/g, "$1\n") + "\n" +
+            "Company: " + "\n" + company.replace(/(.{50})/g, "$1\n") + "\n" +
+            "Directors: " + "\n" + directors.replace(/(.{50})/g, "$1\n") + "\n" +
             "Market Value (20%DM): " + marketValue + "\n";
     }
 
