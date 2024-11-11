@@ -12,7 +12,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([182258.940757, 5820645.920467, 267718.568963, 5864801.890112], map.getSize());
+map.getView().fit([173436.399793, 5820571.734841, 260026.403085, 5865311.755798], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -115,7 +115,7 @@ var featureOverlay = new ol.layer.Vector({
     updateWhileInteracting: true // optional, for instant visual feedback
 });
 
-var doHighlight = false;
+var doHighlight = true;
 var doHover = false;
 
 function createPopupField(currentFeature, currentFeatureKeys, layer) {
@@ -248,7 +248,7 @@ function onPointerMove(evt) {
                     highlightStyle = new ol.style.Style({
                         image: new ol.style.Circle({
                             fill: new ol.style.Fill({
-                                color: "#ffff00"
+                                color: "#ff00ff"
                             }),
                             radius: radius
                         })
@@ -259,7 +259,7 @@ function onPointerMove(evt) {
 
                     highlightStyle = new ol.style.Style({
                         stroke: new ol.style.Stroke({
-                            color: '#ffff00',
+                            color: '#ff00ff',
                             lineDash: null,
                             width: featureWidth
                         })
@@ -268,7 +268,7 @@ function onPointerMove(evt) {
                 } else {
                     highlightStyle = new ol.style.Style({
                         fill: new ol.style.Fill({
-                            color: '#ffff00'
+                            color: '#ff00ff'
                         })
                     })
                 }
