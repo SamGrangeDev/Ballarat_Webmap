@@ -4,15 +4,12 @@ var map = new ol.Map({
     renderer: 'canvas',
     layers: layersList,
     view: new ol.View({
-         maxZoom: 28, minZoom: 1, projection: new ol.proj.Projection({
-            code: 'EPSG:7855',
-            //extent: [-20037508.342789, -20037508.342789, 20037508.342789, 20037508.342789],
-            units: 'm'})
+         maxZoom: 28, minZoom: 1
     })
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([187141.147959, 5819889.762711, 259004.232062, 5864979.227015], map.getSize());
+map.getView().fit([15957477.286327, -4543676.423828, 16074370.568697, -4480362.365965], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -172,7 +169,6 @@ function onPointerMove(evt) {
     }
     var pixel = map.getEventPixel(evt.originalEvent);
     var coord = evt.coordinate;
-    var popupField;
     var currentFeature;
     var currentLayer;
     var currentFeatureKeys;
@@ -193,7 +189,6 @@ function onPointerMove(evt) {
             if (clusteredFeatures) {
 				clusterLength = clusteredFeatures.length;
 			}
-            var clusterFeature;
             if (typeof clusteredFeatures !== "undefined") {
                 if (doPopup) {
                     for(var n=0; n<clusteredFeatures.length; n++) {
@@ -302,8 +297,8 @@ function onPointerMove(evt) {
         } else {
             container.style.display = 'none';
             closer.blur();
-        }
-    };
+        }
+    };
 
 map.on('pointermove', onPointerMove);
 
@@ -331,7 +326,6 @@ function onSingleClickFeatures(evt) {
     }
     var pixel = map.getEventPixel(evt.originalEvent);
     var coord = evt.coordinate;
-    var popupField;
     var currentFeature;
     var currentFeatureKeys;
     var clusteredFeatures;
@@ -466,6 +460,76 @@ map.addControl(Title)
 
 //geolocate
 
+isTracking = false;
+var geolocateControl = (function (Control) {
+    geolocateControl = function(opt_options) {
+        var options = opt_options || {};
+        var button = document.createElement('button');
+        button.className += ' fa fa-map-marker';
+        var handleGeolocate = function() {
+            if (isTracking) {
+                map.removeLayer(geolocateOverlay);
+                isTracking = false;
+          } else if (geolocation.getTracking()) {
+                map.addLayer(geolocateOverlay);
+                map.getView().setCenter(geolocation.getPosition());
+                isTracking = true;
+          }
+        };
+        button.addEventListener('click', handleGeolocate, false);
+        button.addEventListener('touchstart', handleGeolocate, false);
+        var element = document.createElement('div');
+        element.className = 'geolocate ol-unselectable ol-control';
+        element.appendChild(button);
+        ol.control.Control.call(this, {
+            element: element,
+            target: options.target
+        });
+    };
+    if (Control) geolocateControl.__proto__ = Control;
+    geolocateControl.prototype = Object.create(Control && Control.prototype);
+    geolocateControl.prototype.constructor = geolocateControl;
+    return geolocateControl;
+}(ol.control.Control));
+map.addControl(new geolocateControl())
+
+      var geolocation = new ol.Geolocation({
+  projection: map.getView().getProjection()
+});
+
+
+var accuracyFeature = new ol.Feature();
+geolocation.on('change:accuracyGeometry', function() {
+  accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
+});
+
+var positionFeature = new ol.Feature();
+positionFeature.setStyle(new ol.style.Style({
+  image: new ol.style.Circle({
+    radius: 6,
+    fill: new ol.style.Fill({
+      color: '#3399CC'
+    }),
+    stroke: new ol.style.Stroke({
+      color: '#fff',
+      width: 2
+    })
+  })
+}));
+
+geolocation.on('change:position', function() {
+  var coordinates = geolocation.getPosition();
+  positionFeature.setGeometry(coordinates ?
+      new ol.geom.Point(coordinates) : null);
+});
+
+var geolocateOverlay = new ol.layer.Vector({
+  source: new ol.source.Vector({
+    features: [accuracyFeature, positionFeature]
+  })
+});
+
+geolocation.setTracking(true);
 
 
 //measurement
@@ -856,19 +920,20 @@ if (elementToMove && parentElement) {
 
 //geocoder
 
-var geocoder = new Geocoder('nominatim', {
-  provider: 'osm',
-  lang: 'en-US',
-  placeholder: 'Search place or address ...',
-  limit: 5,
-  keepOpen: true,
-});
-map.addControl(geocoder);
-document.getElementsByClassName('gcd-gl-btn')[0].className += ' fa fa-search';
-
 
 //layer search
 
+var searchLayer = new SearchLayer({
+    layer: lyr_ParcelAttributesLabel_88,
+    colName: 'Address',
+    zoom: 10,
+    collapsed: true,
+    map: map
+});
+map.addControl(searchLayer);
+document.getElementsByClassName('search-layer')[0].getElementsByTagName('button')[0].className += ' fa fa-binoculars';
+document.getElementsByClassName('search-layer-input-search')[0].placeholder = 'Search feature ...';
+    
 
 //scalebar
 
@@ -907,11 +972,14 @@ map.addControl(bottomAttribution);
 
 var attributionList = document.createElement('li');
 attributionList.innerHTML = `
-	<a href="https://github.com/tomchadwin/qgis2web">qgis2web</a> &middot;
+	<a href="https://github.com/qgis2web/qgis2web">qgis2web</a> &middot;
 	<a href="https://openlayers.org/">OpenLayers</a> &middot;
 	<a href="https://qgis.org/">QGIS</a>	
 `;
-bottomAttribution.element.appendChild(attributionList);
+var bottomAttributionUl = bottomAttribution.element.querySelector('ul');
+if (bottomAttributionUl) {
+  bottomAttribution.element.insertBefore(attributionList, bottomAttributionUl);
+}
 
 
 // Disable "popup on hover" or "highlight on hover" if ol-control mouseover
